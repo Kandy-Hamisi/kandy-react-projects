@@ -6,8 +6,22 @@ const Sidebar = () => {
     const [queries, setQueries] = useState(['Thika', 'Malindi', 'Mombasa']);
     const [clearing, setClearing] = useState(false);
     const [city, setCity] = useState("");
+    const [weather, setWeather] = useState({});
     
+    const APIKEY = "c41fbd5cfd39aa4a516bdefffae72a03";
+    const url = `https://api.openweathermap.org/data/2.5/weather?q=${city},&appid=${APIKEY}`;
 
+    const getWeather = () => {
+        fetch(url)
+            .then(result => result.json())
+            .then(myData => {
+                setWeather({
+                    myData:myData
+                });
+                
+            });
+        setCity("");
+    }
     
     const handleClick = (e) => {
         e.preventDefault();
@@ -16,7 +30,13 @@ const Sidebar = () => {
             setQueries(queries => {
                 return [...queries, city];
             });
-            setCity("");
+            getWeather();
+            // const myData = await fetch(
+            //     `https://api.openweathermap.org/data/2.5/weather?q=${city},&appid=${APIKEY}`
+            // )
+            // .then(result => result.json())
+            // .then(myData => console.log(myData));
+            // setCity("");
         } else {
             alert("City must be entered");
         }
@@ -33,7 +53,11 @@ const Sidebar = () => {
 
   return (
     <div>
-        <WeatherDetails />
+        {
+            weather.myData !== undefined ?
+            <WeatherDetails data={weather.myData}/>
+            : null
+        }
         <section className='sidebar-section'>
             <div className="search-container">
                 <form name="myForm">
