@@ -1,5 +1,23 @@
+/* global styles */
+
+*{
+  margin: 0;
+  padding: 0;
+}
+
+Link {
+  text-decoration: none !important;
+}
+
+
+
+/* end of global styles */
+
+
 .App {
   text-align: center;
+  display: flex;
+  justify-content: center;
 }
 
 .App-logo {
@@ -21,4 +39,81 @@
 @keyframes App-logo-spin {
   from { transform: rotate(0deg); }
   to { transform: rotate(360deg); }
+}
+
+/* form section */
+
+.addcontact-section, .contact-list {
+  margin-top: 5rem;
+}
+
+.form-section, .my-contacts{
+  background-color: beige;
+  width: 40vw;
+  /* margin-left: 5rem; */
+  padding: 10px 30px;
+}
+
+@media (max-width: 675px) {
+  
+  .form-section, .my-contacts {
+    width: 80vw;
+  }
+}
+
+.form-group {
+  margin: 1em 0;
+  display: flex;
+  flex-direction: column;
+}
+
+label {
+  margin-bottom: 10px;
+}
+
+.form-control {
+  padding: .5em;
+  outline: none;
+  border: none;
+  border-radius: 5px;
+  color: red;
+}
+
+.save-btn {
+  background-color: aquamarine;
+  outline: none;
+  border: none;
+  padding: 10px;
+  border-radius: 5px;
+}
+
+/* contact card styles */
+
+.contact-card {
+  margin: 20px 10px;
+  background-color: #fff;
+  border-radius: 5px;
+  padding: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.details-container {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  text-decoration: none;
+}
+
+span {
+  cursor: pointer;
+}
+
+.edit {
+  margin-right: 10px;
+}
+
+.add-new, .back {
+  margin-top: 1em;
 }
