@@ -1,6 +1,6 @@
 import React, { useContext } from 'react'
 import { ContactContext } from '../App'
-import { Link } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 const ContactCard = (props) => {
     const { fullname, email, id } = props;
     const contactCardContext = useContext(ContactContext);
@@ -8,6 +8,8 @@ const ContactCard = (props) => {
     const displayId = () => {
         console.log(id);
     }
+    const location = useLocation();
+    console.log(location);
   return (
     <div className='contact-card'>
         <Link
